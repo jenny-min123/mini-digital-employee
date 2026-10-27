@@ -3,4 +3,10 @@
 output/
 __pycache__/
 *.pyc
+.pytest_cache/
 data/*.xlsx
+data/*.docx
+data/uploads/
+tasks.db
+tasks.db-wal
+tasks.db-shm

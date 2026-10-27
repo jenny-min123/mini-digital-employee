@@ -1,0 +1,34 @@
+# 第 4 章 · 表单字段（现场演示"加一个字段"，加完刷新页面就出现）
+# type 支持：text / select / multiselect / file / number
+fields:
+  - key: period
+    label: 统计周期
+    type: select
+    options: ["2026-W42", "2026-W43", "2026-W44", "2026-W45"]
+    default: "2026-W44"
+    required: true
+
+  - key: sales_file
+    label: 销售明细
+    type: file
+    accept: [".xlsx", ".csv"]
+    required: true
+
+  - key: minutes_file
+    label: 周会纪要
+    type: file
+    accept: [".docx"]
+    required: true
+
+  - key: scope
+    label: 门店范围
+    type: multiselect
+    options: ["全部门店", "华东区", "华南区", "华北区"]
+    default: ["全部门店"]
+    required: false
+
+  # 现场评委常加的字段，取消注释即可演示：
+  # - key: receiver
+  #   label: 报告接收人
+  #   type: text
+  #   required: false

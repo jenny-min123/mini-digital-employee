@@ -1,0 +1,38 @@
+# 第 4 章 · 质检规则（现场演示改这里，保存即生效）
+# severity: blocking = 不通过就不许送审；warning = 只记录不拦截
+rules:
+  - id: structure
+    name: 结构完整性
+    type: required_sections
+    params:
+      sections: ["本周概览", "门店表现", "异常分析", "下周建议"]
+    severity: blocking
+
+  - id: consistency
+    name: 数据一致性
+    type: number_consistency
+    params:
+      pattern: '环比[+-]?\d+(?:\.\d+)?%'
+    severity: blocking
+
+  - id: length
+    name: 篇幅
+    type: word_count
+    params:
+      min: 600
+      max: 3000
+    severity: blocking
+
+  - id: sensitive
+    name: 敏感信息
+    type: regex_blacklist
+    params:
+      patterns: ['1[3-9]\d{9}', '\d{17}[\dXx]', '薪资', '身份证']
+    severity: blocking
+
+  - id: chart
+    name: 图表存在性
+    type: has_image
+    params:
+      min: 1
+    severity: warning
